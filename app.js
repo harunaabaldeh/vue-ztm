@@ -1,46 +1,33 @@
 const vm = Vue.createApp({
-    data(){
-        return {
-            firstName: "John",
-            middleName: "",
-            lastName: "Mikel",
-            url: "https://www.google.com",
-            raw_html: '<a href="https://google.com" target="_blank">Google</a>',
-            age: 50,
-        }
+  data() {
+    return {
+      perspective: 0,
+      rotateX: 0,
+      rotateY: 0,
+      rotateZ: 0,
+    };
+  },
+  computed: {
+    box() {
+      return {
+        transform: `perspective(${this.perspective}px) 
+                    rotateX(${this.rotateX}deg) 
+                    rotateY(${this.rotateY}deg) 
+                    rotateZ(${this.rotateZ}deg)`,
+      };
     },
-    methods: {
-        increaseAge(){
-            this.age += 10;
-        },
-        decreaseAge(){
-            this.age--;
-        },
-        updateLastName(msg, e){
-            console.log(msg)
-            this.lastName = e.target.value;
-        },
-        updateMiddleName(e){
-            this.middleName = e.target.value
-        }
+  },
+  methods: {
+    reset(){
+        this.perspective = 100,
+        this.rotateX = 0,
+        this.rotateY = 0,
+        this.rotateZ = 0
     },
-    computed: {
-        fullName(){
-            console.log('computed property was called!');
-            return `${this.firstName} ${this.middleName} ${this.lastName.toUpperCase()}`
-        }
-    },
-    wtach: {
-        age(newVal, oldVal){
-            setTimeout(() => {
-                this.age = 20;
-            }, 3000)
-        }
-    }
+    // copy(){
+    //     const text 
+    // }
+  }
 });
 
-vm.mount('#app')
-
-// setTimeout(() => {
-//     vm.firstName = "Ali"
-// }, 3000);
+vm.mount("#app");
