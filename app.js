@@ -18,16 +18,19 @@ const vm = Vue.createApp({
     },
   },
   methods: {
-    reset(){
-        this.perspective = 100,
-        this.rotateX = 0,
-        this.rotateY = 0,
-        this.rotateZ = 0
+    reset() {
+      (this.perspective = 100),
+        (this.rotateX = 0),
+        (this.rotateY = 0),
+        (this.rotateZ = 0);
     },
-    // copy(){
-    //     const text 
-    // }
-  }
+    copy() {
+      const text = `transform:${this.box.transform};`;
+      navigator.clipboard.writeText(text);
+
+      alert("CSS copied to clipboard!");
+    },
+  },
 });
 
 vm.mount("#app");
