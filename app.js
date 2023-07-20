@@ -1,15 +1,33 @@
-const vm = Vue.createApp({
-    data(){
-        return {
-           birds: ['Pigeons', 'Eagles', 'Doves', 'Parrots'],
-           people: [
-            {name: 'Mike', age: 31},
-            {name: "Che", age: 12},
-            {name: "Haruna", age:26}
-           ],
-        }
-    },
-   
+let vm = Vue.createApp({
+  data() {
+    return {
+      message: "Hello Vue",
+    };
+  },
+  beforeCreate() {
+    console.log("beforeCreate() funtion is called!", this.message);
+  },
+  created() {
+    console.log("create() function is called!", this.message);
+  },
+  beforeMount() {
+    console.log("beforeMount() function is called!", this.$el);
+  },
+  mounted() {
+    console.log("mounted() function is called", this.$el);
+  },
+  beforeUpdate() {
+    console.log("beforeUpdate() function is called!");
+  },
+  updated() {
+    console.log("updated() function is called!");
+  },
+  beforeUnmount() {
+    console.log("beforeUmount() is called!");
+  },
+  unmounted() {
+    console.log("unmounted() function is called!");
+  },
 });
 
-vm.mount('#app')
+vm.mount("#app");
