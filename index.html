@@ -4,25 +4,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>vue ztm</title>
     <link rel="stylesheet" href="main.css" />
-    <script src="https://unpkg.com/vue@3"></script>
   </head>
   <body>
-    <div id="app" v-cloak>
-      <p>{{ fullName() }}</p>
+    <div id="app">
+      <h1>Birds</h1>
+      <ul>
+        <li v-for="(bird, index) in birds" :key="index">{{ bird }}</li>
+      </ul>
 
-      <p><a :href="url" target="_blank">Google</a></p>
-      <p v-html="raw_html">{{ raw_html}}</p>
       <hr />
 
-      <label>First Name</label>
-      <input v-model="firstName" type="text" />
-
-      <label>Last Name</label>
-      <input v-model="lastName" type="text" />
+      <h1>People</h1>
+      <ul>
+        <li v-for="person in people">
+          <div v-for="(key, value) in person">{{ key }} : {{ value}}</div>
+        </li>
+      </ul>
     </div>
-    <!-- <div id="app2">
-      <h1>{{ firstName }} {{ lastName }}</h1>
-    </div> -->
+    <script src="https://unpkg.com/vue@3"></script>
     <script src="app.js"></script>
   </body>
 </html>

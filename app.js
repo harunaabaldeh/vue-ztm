@@ -1,21 +1,15 @@
 const vm = Vue.createApp({
     data(){
         return {
-            firstName: "John",
-            lastName: "Doe",
-            url: "https://www.google.com",
-            raw_html: '<a href="https://google.com" target="_blank">Google</a>'
+           birds: ['Pigeons', 'Eagles', 'Doves', 'Parrots'],
+           people: [
+            {name: 'Mike', age: 31},
+            {name: "Che", age: 12},
+            {name: "Haruna", age:26}
+           ],
         }
     },
-    methods: {
-        fullName(){
-            return `${this.firstName} ${this.lastName.toUpperCase()}`
-        }
-    }
+   
 });
 
 vm.mount('#app')
-
-// setTimeout(() => {
-//     vm.firstName = "Ali"
-// }, 3000);
