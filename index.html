@@ -4,37 +4,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>vue ztm</title>
     <link rel="stylesheet" href="main.css" />
-    <script src="https://unpkg.com/vue@3"></script>
   </head>
   <body>
-    <div id="app" v-cloak>
-      <p>{{ fullName }}</p>
+    <div id="app">
+      <p v-if="mode == 1">Showing v-if directive content</p>
+      <template v-else-if="mode == 2">
+        <h1>v-else-if</h1>
+        <p>Bonus content</p>
+      </template>
 
-      <p><a :href="url" target="_blank">Google</a></p>
-      <p v-html="raw_html">{{ raw_html}}</p>
+      <p v-else>else part</p>
 
-      <p>Age: {{ age }}</p>
-      <hr />
+      <i v-show="mode ==1">v-show</i>
 
-      <label>First Name</label>
-      <input v-model="firstName" type="text" />
-
-      <label>Middle Name</label>
-      <input type="text" @keyup.enter="updateMiddleName" />
-
-      <label>Last Name</label>
-      <input
-        :value="lastName"
-        type="text"
-        @input.prevent="updateLastName('Last name event was triggered!', $event)"
-      />
-
-      <button @click="increaseAge">Increment</button>
-      <button @click="decreaseAge">Decrement</button>
+      <select v-model="mode">
+        <option value="1">v-if</option>
+        <option value="2">v-else-if</option>
+        <option value="3">v-else</option>
+      </select>
     </div>
-    <!-- <div id="app2">
-      <h1>{{ firstName }} {{ lastName }}</h1>
-    </div> -->
+    <script src="https://unpkg.com/vue@3"></script>
     <script src="app.js"></script>
   </body>
 </html>
