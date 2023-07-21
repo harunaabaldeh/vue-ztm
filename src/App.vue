@@ -1,29 +1,41 @@
 <template>
-  <h3>Hey!</h3>
-  <!-- call the kid component below -->
-  <greeting :age="age" />
-  <user :age="age" @age-change="updateAge" :ageChangeFn="updateAgeCB" />
+    <app-form>
+        <template v-slot:help>
+            <p>{{ helpText }}</p>
+        </template>
+        <template v-slot:fields>
+            <input type="text" placeholder="Email">
+            <input type="email" placeholder="Username">
+            <input type="password" placeholder="Password">
+        </template>
+        <template v-slot:buttons></template>
+    </app-form>
+    <p>Dummy text!</p>
+    <app-form>
+        <template v-slot:help>
+            <p>This is some help text</p>
+        </template>
+        <template v-slot:fields>
+            <input type="text" placeholder="Name">
+            <input type="text" placeholder="Message">
+        </template>
+        <template v-slot:buttons>
+            <button type="submit">Submit</button>
+        </template>
+    </app-form>
 </template>
 
 <script>
-import Greeting from '../src/components/Greeting.vue';
-import User from "../src/components/User.vue"
+import AppForm from './components/Form.vue';
+
 export default {
-  name: "App",
-  components: { Greeting, User },
-  data() {
-    return {
-      age: 20
+    name: "App",
+    components: { AppForm },
+    data() {
+        return {
+            helpText: "This is some help text"
+        }
     }
-  },
-  methods: {
-    updateAge(num) {
-      this.age += num;
-    },
-    updateAgeCB(num) {
-      this.age += num
-    }
-  }
 }
 </script>
 
